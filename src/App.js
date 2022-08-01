@@ -50,21 +50,62 @@
 
 // export default App;
 
+// import React from 'react';
+// import Header from './component/Header';
+// import Tes from './component/module/Tes';
+// import {Button, Input} from './component/Named';
+
+// function App() {
+//   return(
+//     <React.Fragment>
+//       <h1>LATIHAN EXPORT IMPORT</h1>
+//       <Header/>
+//       <Tes/>
+//       <Input/>
+//       <Button/>
+//     </React.Fragment>
+//   );
+// }
+
+// export default App;
+
 import React from 'react';
-import Header from './component/Header';
-import Tes from './component/module/Tes';
-import {Button, Input} from './component/Named';
 
 function App() {
+  let [produk, setProduk] = React.useState([
+  {
+    jenis: "Elektronik",
+    produk: "Handphone",
+    brand: [{
+      nama: "Samsung",
+      harga: "Rp. 1.000.000.000",
+    },
+    {
+      nama: "Xiaomi",
+      harga: "Rp. 500.000",
+    },
+   ],
+  },
+  {
+    jenis: "Transportasi",
+    produk: "mobil",
+    brand: [{
+      nama: "Toyota",
+      harga: "Rp. 1.000.000.000,000",
+    },
+    {
+      nama: "Xiaomi",
+      harga: "Rp. 500.000.00",
+    },
+   ],
+  },
+]);
   return(
     <React.Fragment>
-      <h1>LATIHAN EXPORT IMPORT</h1>
-      <Header/>
-      <Tes/>
-      <Input/>
-      <Button/>
+      <h1>Latihan 1</h1>
+      <Hasil list = {produk}/>
     </React.Fragment>
-  );
+  )
 }
 
 export default App;

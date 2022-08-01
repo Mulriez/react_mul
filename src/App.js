@@ -50,19 +50,65 @@
 
 // export default App;
 
-import React from 'react';
-import Header from './component/Header';
-import Tes from './component/module/Tes';
-import {Button, Input} from './component/Named';
+// import React from 'react';
+// import Header from './component/Header';
+// import Tes from './component/module/Tes';
+// import {Button, Input} from './component/Named';
+
+// function App() {
+//   return(
+//     <React.Fragment>
+//       <h1>LATIHAN EXPORT IMPORT</h1>
+//       <Header/>
+//       <Tes/>
+//       <Input/>
+//       <Button/>
+//     </React.Fragment>
+//   );
+// }
+
+// export default App;
+
+import React from "react";
+import "./style/style.css";
+import Identitas from "./component/module/Identitas";
+import Nilai from "./component/module/nilai";
+import DataSiswa from "./component/module/Datasiswa";
 
 function App() {
-  return(
+  let [data, setData] = React.useState([10, 20, 30, 40, 50]);
+  const [dataSiswa, setDataSiswa] = React.useState([
+    {
+      nama: "Hilmi",
+      kelas: "XI RPL",
+      nilai: 100,
+    },
+    {
+      nama: "Harry",
+      kelas: "XI TKJ",
+      nilai: 90,
+    },
+    {
+      nama: "Abi",
+      kelas: "XI RPL",
+      nilai: 80,
+    },
+  ]);
+
+  return (
     <React.Fragment>
-      <h1>LATIHAN EXPORT IMPORT</h1>
-      <Header/>
-      <Tes/>
-      <Input/>
-      <Button/>
+      <h1 className="header">Latihan Props</h1>
+      <section>
+        <Identitas nama={"Hilmi"} kelas={"XI RPL"} nilai={100} />
+        <Identitas nama={"Radhy"} kelas={"XI TKJ"} nilai={90} />
+        <Identitas nama={"Nabil"} kelas={"XI RPL"} nilai={100} />
+        <Identitas nama={"Harry"} kelas={"XI TKJ"} nilai={80} />
+        <Identitas />
+      </section>
+
+      <Nilai nama={"Mul"} data={data} />
+
+      <DataSiswa data={dataSiswa}/>
     </React.Fragment>
   );
 }

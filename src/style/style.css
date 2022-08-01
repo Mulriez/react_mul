@@ -3,3 +3,21 @@
     padding: 5px 10px;
     border: 1px solid red;
 }
+
+.id{
+    background-color: cyan;
+    padding: 5px 10px;
+    border: 1px solid blue;
+    width: 150px;
+    padding-top: 5px;
+}
+.bungkus{
+    width: 150px;
+}
+.judulNilai{
+    margin-left: 20px;
+}
+.dua{
+    background-color: azure;
+    border: 1px solid deepskyblue;
+}

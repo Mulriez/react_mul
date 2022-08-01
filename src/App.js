@@ -79,36 +79,46 @@ function App() {
   let [data, setData] = React.useState([10, 20, 30, 40, 50]);
   const [dataSiswa, setDataSiswa] = React.useState([
     {
-      nama: "Hilmi",
+      nama: "Acim",
       kelas: "XI RPL",
       nilai: 100,
     },
     {
-      nama: "Harry",
+      nama: "Harold",
       kelas: "XI TKJ",
       nilai: 90,
     },
     {
-      nama: "Abi",
+      nama: "Avdol",
       kelas: "XI RPL",
       nilai: 80,
     },
+    {
+      nama: "Gyro",
+      kelas: "XI RPL",
+      nilai: 80,
+    }
   ]);
 
+  const [nilaisiswa, setNilaisiswa] = React.useState({
+    nama: "nopall",
+    kelas: "XI RPL",
+    nilai: [100, 80, 90, 80, 90]
+  })
   return (
     <React.Fragment>
       <h1 className="header">Latihan Props</h1>
       <section>
-        <Identitas nama={"Hilmi"} kelas={"XI RPL"} nilai={100} />
-        <Identitas nama={"Radhy"} kelas={"XI TKJ"} nilai={90} />
+        <Identitas nama={"Acim"} kelas={"XI RPL"} nilai={100} />
+        <Identitas nama={"Thomas"} kelas={"XI TKJ"} nilai={90} />
         <Identitas nama={"Nabil"} kelas={"XI RPL"} nilai={100} />
         <Identitas nama={"Harry"} kelas={"XI TKJ"} nilai={80} />
         <Identitas />
       </section>
 
-      <Nilai nama={"Mul"} data={data} />
+      <Nilai nama={"Muliya"} data={data} />
 
-      <DataSiswa data={dataSiswa}/>
+      <DataSiswa data={dataSiswa} nilai={nilaisiswa}/>
     </React.Fragment>
   );
 }

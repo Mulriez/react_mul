@@ -70,6 +70,7 @@
 // export default App;
 
 import React from 'react';
+import Produk from './component/module/produk';
 
 function App() {
   let [produk, setProduk] = React.useState([
@@ -103,7 +104,7 @@ function App() {
   return(
     <React.Fragment>
       <h1>Latihan 1</h1>
-      <Hasil list = {produk}/>
+      <Produk data={produk}/>
     </React.Fragment>
   )
 }

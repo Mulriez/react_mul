@@ -1,23 +1,19 @@
-.input{
+.input {
     background-color: aqua;
     padding: 5px 10px;
     border: 1px solid red;
 }
 
-.id{
-    background-color: cyan;
+.layout {
+    border: 1px solid red;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 300px;
+    color: white;
     padding: 5px 10px;
-    border: 1px solid blue;
-    width: 150px;
-    padding-top: 5px;
-}
-.bungkus{
-    width: 150px;
-}
-.judulNilai{
-    margin-left: 20px;
-}
-.dua{
-    background-color: azure;
-    border: 1px solid deepskyblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
 }

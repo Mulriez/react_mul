@@ -6,7 +6,7 @@ import "./style/style.css"
 export default function App() {
   
   let [name,setName] = React.useState('');
-  let [email,setEmail] = React.useState('';)
+  let [email,setEmail] = React.useState('');
   let [password,setPassword] = React.useState('');
   let [confirmpassword,setConfirmpassword] = React.useState('');
   return(

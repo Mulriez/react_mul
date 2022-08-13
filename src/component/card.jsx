@@ -26,11 +26,13 @@ export default function Card({ data, value, setData}) {
                     return (
                         <div>
                             <p>id: {item?.id}</p>
-                            <p>Username : {item?.username}</p>
+                            <p>Nama : {item?.name}</p>
                             <p>Email : {item?.email}</p>
-                            <p>Password : {item?.password}</p>
-                            <p>Confirm-Password : {item?.confirmPassword}</p>
-                            <button value={item?.id} onClick={handleDelete}>Hapus</button>
+                            <p>Tempat Lahir : {item?.tempatLahir}</p>
+                            <p>Tanggal Lahir : {item?.tanggalLahir}</p>
+                            <p>Jenis Kelamin : {item?.jenisKelamin}</p>
+                            <button value={item?.id} onClick={handleDelete} className="btn"
+                            >Hapus</button>
                         </div>
                     )
                 })}

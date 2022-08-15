@@ -1,5 +1,15 @@
-.input{
-    background-color: aqua;
-    padding: 5px 10px;
-    border: 1px solid red;
+.red{
+    background-color: red;
+    width:100px;
+    height:100px;
+}
+.yellow{
+    background-color: yellow;
+    width:100px;
+    height:100px;
+}
+.green{
+    background-color: green;
+    width:100px;
+    height:100px;
 }

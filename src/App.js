@@ -51,18 +51,11 @@
 // export default App;
 
 import React from 'react';
-import Header from './component/Header';
-import Tes from './component/module/Tes';
-import {Button, Input} from './component/Named';
 
 function App() {
   return(
     <React.Fragment>
-      <h1>LATIHAN EXPORT IMPORT</h1>
-      <Header/>
-      <Tes/>
-      <Input/>
-      <Button/>
+      <h1 className='bg-red-500'>my beat</h1>
     </React.Fragment>
   );
 }

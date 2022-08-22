@@ -1,8 +1,9 @@
 .op{
-    background-color: darksalmon;
-    margin-left: 40px;
+    margin-top: 10px;
+    border: 2px solid black;
+    margin-left: 20px;
     width: 500px;
-    height: 700px;
+    height: 400px;
     border-radius: 15px;
     box-shadow: 5px 10px black;
     
@@ -11,10 +12,8 @@
     padding: 5px 10px;
     display: flex;
     flex-direction: column;
-    width: 900px;
+    width: 1000px;
     border-radius: 10px;
-    margin-top: 15px;
-    margin-left: 20px;
 }
 .btn {
     background-color:red;
@@ -23,8 +22,8 @@
     cursor: pointer;
     margin-top: 10px;
     border-radius: 5px;
-    margin-left: 30px;
-    width: 200px;
+    margin-left: 10px;
+    width: 380px;
     box-shadow: 1px 2px black;
 }
 .input-text {
@@ -40,3 +39,11 @@
     font-weight: bold;
 }
 
+.mb{
+    margin-bottom: 50;
+    font-weight: 500;
+}
+.ml{
+    font-weight: bold;
+    margin-left: 10px;
+}

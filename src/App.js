@@ -3,23 +3,18 @@ import Button from "./component/button";
 import "./style/style.css";
 import Input from "./component/input";
 import Card from "./component/card";
+import Textarea from './component/textarea';
 
 export default function App() {
   const [values, setValues] = React.useState({
     username: "",
     email: "",
-    tempatLahir: "",
-    tanggalLahir: "",
-    jenisKelamin:"",
-    password: "",
-    confirmPassword: "",
   });
 
   const [data, setData] = React.useState([]);
   const [errors, setErrors] = React.useState({});
 
   const handleChange = (event) => {
-    console.log("jalan");
     setValues((values) => {
       return {
         ...values,
@@ -30,6 +25,7 @@ export default function App() {
 
   const handleBlur = (e) => {
     e.preventDefault();
+    console.log("errors");
     if (e.target.value === "") {
       setErrors((errors) => {
         return { ...errors, [e.target.name]: true };
@@ -40,18 +36,18 @@ export default function App() {
         ...errors,
         [e.target.name]: false,
       });
-    } 
-    else {
+    } else {
       setErrors({
         ...errors,
         [e.target.name]: true,
       });
-    }
+    };
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+    console.log("Form Tersubmit");
+
     values.id = new Date().getTime();
     setData((data) => {
       return [...data, values];
@@ -60,104 +56,50 @@ export default function App() {
       return {
         username: "",
         email: "",
-        tempatLahir: "",
-        tanggalLahir: "",
-        jenisKelamin:"",
-        password: "",
-        confirmPassword: "",
       };
     });
   };
 
+
   return (
     <React.Fragment>
       <div style={{ display: "flex" }}>
-        <div> 
+        <div>
           <form 
-          className="op"
-          onSubmit={handleSubmit}>
-            
+          textError={"Form harus diisi"}
+          className="op" 
+          onSubmit={handleSubmit} 
+          onBlur={handleBlur}
+          >
+            <p className="ml">Buku Catatan</p>
             <Input
               isError={errors?.username}
-              textError={"wajib diisi"}
+              textError={"Tidak Sesuai"}
               name="username"
               value={values.username}
-              label={"Nama"}
-              placeholder="Nama"
+              placeholder="judul"
               onBlur={handleBlur}
               onChange={handleChange}
             />
-            <Input
+            <Textarea
+              cols="50"
+              rows="10"
               isError={errors?.email}
-              textError={"wajib diisi"}
+              textError={"Tidak sesuai"}
               name="email"
               value={values.email}
-              label={"Email"}
-              placeholder="Email"
+              placeholder="catatan"
               onBlur={handleBlur}
               onChange={handleChange}
             />
-            <Input
-              isError={errors?.tempatLahir}
-              textError={"wajib diisi"}
-              name="tempatLahir"
-              value={values.tempatLahir}
-              label={"Tempat Lahir"}
-              placeholder="Tempat Lahir"
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
-            <Input
-              type="date"
-              isError={errors?.tanggalLahir}
-              textError={"wajib diisi"}
-              name="tanggalLahir"
-              value={values.tanggalLahir}
-              label={"Tanggal Lahir"}
-              placeholder="Tanggal Lahir"
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
-            <Input
-              isError={errors?.jenisKelamin}
-              textError={"wajib diisi"}
-              name="Jenis Kelamin"
-              value={values.jenisKelamin}
-              label={"Jenis Kelamin"}
-              placeholder="Jenis Kelamin"
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
-            <Input
-              isError={errors?.password}
-              textError={"wajib diisi"}
-              name="password"
-              value={values.password}
-              label={"Password"}
-              placeholder="Password"
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
-            <Input
-              isError={errors?.confirmPassword}
-              textError={"wajib diisi"}
-              name="confirmPassword"
-              value={values.confirmPassword}
-              label={"Konfirmasi Password"}
-              placeholder="Konfirmasi Password"
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
-            <Button title={"Reset"} color="blue" />
-            <Button type="submit" title={"Save"} />
+            <Button title={"Save"} />
           </form>
         </div>
         <div
           style={{
-            display:"flex",
-            width: "20%",
-            height: "20vh",
-            marginLeft: "60vh",
+            width: "40%",
+            height: "40vh",
+            marginLeft: "20%",
           }}
         >
           <Card data={data} value={values} setData={setData} />
@@ -166,3 +108,27 @@ export default function App() {
     </React.Fragment>
   );
 }
+
+// function App() {
+//   let [count, setCount] = React.useState(0);
+//   const handleTambah = () => {
+//     setCount(count + 1)
+//   };
+//   const handleKurang = () => {
+//     setCount(count - 1)
+//   };
+//   return (
+//     <React.Fragment>
+
+//       <h1>count = {count}</h1>
+//       <Button onClick={handleTambah} title='Tambah' color='blue' />
+//       <Button disabled={count <= 0 ? true : false} onClick={handleKurang} title='Kurang' color='green' />
+//       <Button disabled={count === 0 ? true : false} onClick={() => {
+//         setCount(0)
+//       }} title='Resets' />
+
+//     </React.Fragment>
+//   );
+// }
+
+// export default App;

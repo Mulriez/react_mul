@@ -4,9 +4,9 @@ export default function Detail() {
   let { id, nm } = useParams();
   return (
     <div>
-      <p>ギラギラ残酷な 赤石のライトアップ</p>
+      <p>I LOVE YOU mo roku ni iwanai</p>
       <p>
-        The ID is {id} {nm}
+        The ID is {id} : {nm}
       </p>
     </div>
   );

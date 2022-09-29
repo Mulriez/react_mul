@@ -12,6 +12,7 @@ export default function User() {
   const [page, setPage] = React.useState(100);
   const [isPageUser,setIsPageUser] = React.useState(false);
 
+
   let navigate = useNavigate();
 
   const getUserHandle = async () => {
@@ -22,7 +23,6 @@ export default function User() {
       );
       console.log("response => ", response.data);
       setUsers(response.data.data);
-      setPage(response.data.page);
     } catch (err) {
       console.log("user =>", users);
       console.log("page =>", page);
@@ -86,14 +86,12 @@ export default function User() {
           </tr>
         </thead>
         <tbody>
-          {!isPageUser ?
+          {isPageUser ?
           <tr>
             <td colSpan={9}><Skeleton
-            baseColor="blue"
-            highlightColor="purple"
-            direction="rtl"
-            duration={1.5} 
-            count={4} /></td>
+            baseColor="white"
+            highlightColor="grey"
+            count={5} /></td>
           </tr>
            : users.map((user, index) => {
             return (

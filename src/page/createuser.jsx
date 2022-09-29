@@ -9,7 +9,8 @@ export default function CreateUser(){
     let navigate = useNavigate()
 
     const [isLoading,setIsLoading] = React.useState(false)
-
+    let [MsgError,setMsgError] = React.useState('')
+    const [errorz,setErrorz] = React.useState({})
     const [users,setUsers] = React.useState({
         username:"",
         email:"",
@@ -39,9 +40,11 @@ export default function CreateUser(){
 
         }
         catch (err){
-            console.log(err)
+            console.log(err);
+
+            setErrorz(err?.response?.data?.errorz)
             setIsLoading(true);
-            alert ("There Is An Error!!")
+            setMsgError("periksa inputan kembali")
         }
       }
     return(
@@ -49,9 +52,11 @@ export default function CreateUser(){
             <h1 className="text-xl text-purple-600">
                 Tambah User
             </h1>
+            <p className="text-red-700" > {MsgError}</p>
             <form
             onSubmit={handleSubmit}
             >
+                <p >{errorz?.username?.[0]}</p>
                 <Input 
                 value={users.username} 
                 label={"username"}
@@ -96,7 +101,7 @@ export default function CreateUser(){
                 onChange={handleChange}
                 />
                 <Button title={isLoading ? 'saving' : 'save'}/>
-                <Link to="/user" className="px-4"> 
+                <Link to="/user" className="px-4 text-white"> 
                 <Button color="blue" title={"Back"}/>
                 </Link>
             </form>

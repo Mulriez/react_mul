@@ -26,7 +26,7 @@ function App() {
         <Route path="/update/:id" element={<Update />} />
         <Route path="/detail/:id" element={<Detail/>}/>
         <Route path="/404" element={<Not />} />
-        <Route path="/*" element={<Navigate to="/404" replace={true} />} />
+        <Route path="*" element={<Navigate to="/404" replace={true} />} />
       </Routes>
     </React.Fragment>
   );

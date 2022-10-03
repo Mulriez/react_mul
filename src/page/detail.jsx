@@ -4,22 +4,43 @@ import { useNavigate, useParams } from "react-router-dom";
 import Button from "../komponen/button";
 
 export default function Detail() {
-    let navigate = useNavigate();
-    let {id} = useParams();
-  const [buku, setBuku] = React.useState([]);
+  let navigate = useNavigate();
+  let { id } = useParams();
+  const [buku, setBuku] = React.useState({
+    kode_penulis: "77777",
+    judul_buku: "",
+    nama_pengarang: "",
+    nama_penerbit_buku: "",
+    ketebalan_buku: "",
+    tahun_terbit_buku: "",
+    sinopsis: "",
+  });
 
   const getBukuHandle = async () => {
     try {
       const response = await axios.get(
-        `https://api-react-2.herokuapp.com/api/perpustakaan${id}?kode=77777`
+        `https://api-react-2.herokuapp.com/api/perpustakaan${id}?kode=77777`,
+        buku
       );
-      setBuku(response.data.data.data);
+      const dataUser = response.data.data;
+      setBuku(() => {
+        return {
+          kode_penulis: "77777",
+          judul_buku: dataUser.judul_buku,
+          nama_pengarang: dataUser.nama_pengarang,
+          nama_penerbit_buku: dataUser.nama_penerbit_buku,
+          ketebalan_buku: dataUser.ketebalan_buku,
+          tahun_terbit_buku: dataUser.tahun_terbit_buku,
+          sinopsis: dataUser.sinopsis,
+        };
+      });
+      console.log(response.data.data);
     } catch (err) {}
   };
 
   React.useEffect(() => {
     getBukuHandle();
-  },[id]);
+  }, [id]);
 
   return (
     <div>
@@ -37,17 +58,8 @@ export default function Detail() {
           </tr>
         </thead>
         <tbody>
-          {buku.map((buku, index) => {
-            return (
-              <tr key={index} className=" border">
-                <td className="pr-5">{buku.kode_penulis}</td>
-                <td className="pr-5">{buku.judul_buku}</td>
-                <td className="pr-5">{buku.nama_pengarang}</td>
-                <td className="pr-5">{buku.nama_penerbit_buku}</td>
-                <td className="pr-5">{buku.ketebalan_buku}</td>
-                <td className="pr-5">{buku.tahun_terbit_buku}</td>
-                <td className="pr-5">{buku.sinopsis}</td>
-                <td className="py-4 text-white">
+          <tr>
+          <td className="py-4 text-white">
                   <Button
                     onClick={() => {
                       return navigate(-1);
@@ -56,9 +68,7 @@ export default function Detail() {
                     title={"back"}
                   />
                 </td>
-              </tr>
-            );
-          })}
+          </tr>
         </tbody>
       </table>
     </div>

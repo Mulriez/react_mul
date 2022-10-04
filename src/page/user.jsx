@@ -3,30 +3,29 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../komponen/button";
 import Swal from "sweetalert2";
-import Skeleton from 'react-loading-skeleton'
+import Skeleton from "react-loading-skeleton";
 import { getAllUser, del } from "../API/usr";
-
+import Cookies from "js-cookie";
 
 export default function User() {
   const [users, setUsers] = React.useState([]);
   //state untuk menyimpan data user dari api
   const [page, setPage] = React.useState(100);
-  const [isPageUser,setIsPageUser] = React.useState(false);
-
+  const [isPageUser, setIsPageUser] = React.useState(false);
 
   let navigate = useNavigate();
 
   const getUserHandle = async () => {
     try {
-      setIsPageUser(true)
-      const response = await getAllUser(page)
+      setIsPageUser(true);
+      const response = await getAllUser(page);
       console.log("response => ", response.data);
       setUsers(response.data.data);
     } catch (err) {
       console.log("user =>", users);
       console.log("page =>", page);
       console.log(err);
-    } finally{
+    } finally {
       setIsPageUser(false);
     }
   };
@@ -44,9 +43,9 @@ export default function User() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const respone = await del(id)
+          const respone = await del(id);
           console.log("نعم ، احذفها");
-          getUserHandle()
+          getUserHandle();
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         } catch (error) {
           Swal.fire("Failed!", "Failed to delete.", "error");
@@ -67,8 +66,17 @@ export default function User() {
     <div>
       <h1 className="text-xl text-blue-600">User</h1>
       <Link to="/user/create">
-        <button className="text-purple-600">Tambah User</button>
+        <button className="text-purple-600 mr-7">Tambah User</button>
       </Link>
+      <div className='text-white'>
+      <Button
+        title={"Log out"}
+        onClick={() => {
+          Cookies.remove("myapps_token");
+          return navigate("/login", { replace: true });
+        }}
+      />
+      </div>
       <table className="table-auto center">
         <thead>
           <tr className="text-left border">
@@ -83,42 +91,43 @@ export default function User() {
           </tr>
         </thead>
         <tbody>
-          {isPageUser ?
-          <tr>
-            <td colSpan={9}><Skeleton
-            baseColor="white"
-            highlightColor="grey"
-            count={5} /></td>
-          </tr>
-           : users.map((user, index) => {
-            return (
-              <tr key={index} className="border">
-                <td>{index + 1}</td>
-                <td>{user.username}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.jenis_kelamin}</td>
-                <td>{user.stored_at}</td>
-                <td>{user.updated_at}</td>
-                <td>
-                  <Button
-                    onClick={() => {
-                      return navigate(`/user/update/${user.id}`);
-                    }}
-                    color="blue"
-                    title={"edit"}
-                  />
-                  <Button
-                    onClick={() => {
-                      deleteUserHandle(user.id);
-                    }}
-                    color="red"
-                    title={"Delete"}
-                  />
-                </td>
-              </tr>
-            );
-          })}
+          {isPageUser ? (
+            <tr>
+              <td colSpan={9}>
+                <Skeleton baseColor="white" highlightColor="grey" count={5} />
+              </td>
+            </tr>
+          ) : (
+            users.map((user, index) => {
+              return (
+                <tr key={index} className="border">
+                  <td>{index + 1}</td>
+                  <td>{user.username}</td>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.jenis_kelamin}</td>
+                  <td>{user.stored_at}</td>
+                  <td>{user.updated_at}</td>
+                  <td>
+                    <Button
+                      onClick={() => {
+                        return navigate(`/user/update/${user.id}`);
+                      }}
+                      color="blue"
+                      title={"edit"}
+                    />
+                    <Button
+                      onClick={() => {
+                        deleteUserHandle(user.id);
+                      }}
+                      color="red"
+                      title={"Delete"}
+                    />
+                  </td>
+                </tr>
+              );
+            })
+          )}
         </tbody>
       </table>
       <p>Saat ini di Page {page}</p>

@@ -30,7 +30,7 @@ try {
     const response = await login(payload);
     const data = response.data
     Cookies.set("myapps_token", data?.token);
-    return navigate("/user", {replace:true})
+    return navigate("/artikel", {replace:true})
 } catch (err) {
     console.log(err);
 }

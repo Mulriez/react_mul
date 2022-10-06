@@ -36,7 +36,7 @@ export default function Button({ title, color = "red", disabled, ...props }) {
           backgroundColor: color,
           opacity: disabled ? 0.5 : 1,
         }}
-        className="button"
+        className="h-10 w-24 text-white rounded"
       >
         {title}
       </button>

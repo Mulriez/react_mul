@@ -5,6 +5,9 @@ import CreateUser from "./page/createuser";
 import UpdateUser from "./page/updateUsr";
 import ProtectRoute from "./routers/protectRoute";
 import Login from "./page/auth/login";
+import Artikel from "./page/artikel";
+import Tambah from "./page/artikel/tambah";
+
 
 function App() {
   return (
@@ -12,6 +15,30 @@ function App() {
       <h1 className="bg-red-500 text-white">Belajar API</h1>
       <Routes>
         <Route path="/login" element={<Login />} />
+        {/* <Route
+          path="/upgrade/"
+          element={
+            <ProtectRoute>
+              <Upgrade />
+            </ProtectRoute>
+          }
+        /> */}
+        <Route
+          path="/artikel"
+          element={
+            <ProtectRoute>
+              <Artikel />
+            </ProtectRoute>
+          }
+        />
+        <Route
+          path="/tambahArt"
+          element={
+            <ProtectRoute>
+              <Tambah />
+            </ProtectRoute>
+          }
+        />
         <Route
           path="/user"
           element={

@@ -130,26 +130,6 @@ export default function User() {
           )}
         </tbody>
       </table>
-      <p>Saat ini di Page {page}</p>
-
-      <div className="flex items-center justify-center">
-        <button
-          className="mx-10"
-          onClick={() => {
-            setPage(page - 1);
-          }}
-        >
-          Previos
-        </button>
-        <button
-          className="mx-10"
-          onClick={() => {
-            setPage(page + 1);
-          }}
-        >
-          Next
-        </button>
-      </div>
     </div>
   );
 }

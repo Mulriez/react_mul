@@ -15,4 +15,20 @@ export async function createAllArtikel(payload) {
     return axios.post(`/artikel`, formData)
 }
 
+export async function detail(slug){
+    return axios.get(`artikel/${slug}`)
+}
+
+export async function deleteArtikel(id) {
+    return axios.post(`/artikel/delete/${id}`)
+  }
+
+  export async function updateArtikel(id, payload) {
+    const formData = new FormData();
+    formData.append("judul", payload.judul);
+    formData.append("artikel", payload.artikel);
+    formData.append("thumbnail", payload.thumbnail);
+  
+    return axios.post(`/artikel/update/${id}`, formData)
+  }
 

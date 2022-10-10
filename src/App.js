@@ -7,6 +7,8 @@ import ProtectRoute from "./routers/protectRoute";
 import Login from "./page/auth/login";
 import Artikel from "./page/artikel";
 import Tambah from "./page/artikel/tambah";
+import Detail from "./page/artikel/detail";
+import Update from "./page/artikel/update";
 
 
 function App() {
@@ -15,19 +17,27 @@ function App() {
       <h1 className="bg-red-500 text-white">Belajar API</h1>
       <Routes>
         <Route path="/login" element={<Login />} />
-        {/* <Route
-          path="/upgrade/"
+        <Route
+          path="/update/:id/:slug"
           element={
             <ProtectRoute>
-              <Upgrade />
+              <Update />
             </ProtectRoute>
           }
-        /> */}
+        />
         <Route
           path="/artikel"
           element={
             <ProtectRoute>
               <Artikel />
+            </ProtectRoute>
+          }
+        />
+        <Route
+          path="/detail/:slug"
+          element={
+            <ProtectRoute>
+              <Detail />
             </ProtectRoute>
           }
         />

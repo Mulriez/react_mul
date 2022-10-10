@@ -2,7 +2,7 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import Button from "../../komponen/button";
 import { useNavigate, Link } from "react-router-dom";
-import { getAllArtikel } from "../../API/artikel";
+import { deleteArtikel, getAllArtikel } from "../../API/artikel";
 
 export default function Artikel() {
   const [list, setList] = React.useState([]);
@@ -69,17 +69,39 @@ export default function Artikel() {
                     {""}
                     <Button
                       onClick={() => {
-                        return navigate(`/artikel/upgrade/${artikel.id}`);
+                        return navigate(`/update/${artikel.id}/${artikel.slug}`);
                       }}
                       color="blue"
                       title={"Edit"}
                     />
                     <Button
-                      onClick={() => {
+                      onClick={async() => {
                         console.log("delete jalan");
+                        const response = await deleteArtikel(artikel.id)
+                        console.log(response.data)
+                        try {
+                          if (response.data.status === "Fail") {
+                            alert('gagal')
+                          }
+                          else {
+                            alert('berhasil')
+                          }
+                          getListHandle()
+                        }
+                        catch (err){
+                          console.log(err);
+                        }
                       }}
                       color="red"
                       title={"Delete"}
+                    />
+                     <Button
+                      onClick={() => {
+                        return navigate(`/detail/${artikel.slug}`)
+                        console.log("delete jalan");
+                      }}
+                      color="purple"
+                      title={"view"}
                     />
                   </td>
                 </tr>

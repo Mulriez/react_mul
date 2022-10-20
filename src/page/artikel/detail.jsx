@@ -33,7 +33,7 @@ export default function Detail() {
 
   return (
     <React.Fragment>
-      <h1 className="text-center mb-5 mt-3 text-xl">Detail Artikel</h1>
+      <h1 className="text-center mb-5 mt-3 text-xl">Detail Artikel dengan slug ({slug})</h1>
       <div className="flex justify-evenly border">
       <div>
           <h1 className="text-xl">Judul</h1>

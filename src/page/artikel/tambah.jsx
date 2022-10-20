@@ -27,6 +27,7 @@ export default function Tambah() {
       e.preventDefault()
       alert("berhasil")
       const response = await createAllArtikel (payload)
+      return navigate("/artikel", {replace: true})
     } catch (err) {
       console.log(err);
     }

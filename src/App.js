@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
-          path="/update/:id/:slug"
+          path="/artikel/update/:slug"
           element={
             <ProtectRoute>
               <Update />

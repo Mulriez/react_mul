@@ -69,7 +69,7 @@ export default function Artikel() {
                     {""}
                     <Button
                       onClick={() => {
-                        return navigate(`/update/${artikel.id}/${artikel.slug}`);
+                        return navigate(`/artikel/update/${artikel.slug}`);
                       }}
                       color="blue"
                       title={"Edit"}

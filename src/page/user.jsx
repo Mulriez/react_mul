@@ -6,12 +6,19 @@ import Swal from "sweetalert2";
 import Skeleton from "react-loading-skeleton";
 import { getAllUser, del } from "../API/usr";
 import Cookies from "js-cookie";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../redux/action/countAction";
 
 export default function User() {
   const [users, setUsers] = React.useState([]);
   //state untuk menyimpan data user dari api
   const [page, setPage] = React.useState(100);
   const [isPageUser, setIsPageUser] = React.useState(false);
+  const store = useSelector((state) => state);
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
+  console.log("store =>", store);
+  console.log("count =>", count);
 
   let navigate = useNavigate();
 
@@ -68,14 +75,14 @@ export default function User() {
       <Link to="/user/create">
         <button className="text-purple-600 mr-7">Tambah User</button>
       </Link>
-      <div className='text-white'>
-      <Button
-        title={"Log out"}
-        onClick={() => {
-          Cookies.remove("myapps_token");
-          return navigate("/login", { replace: true });
-        }}
-      />
+      <div className="text-white">
+        <Button
+          title={"Log out"}
+          onClick={() => {
+            Cookies.remove("myapps_token");
+            return navigate("/login", { replace: true });
+          }}
+        />
       </div>
       <table className="table-auto center">
         <thead>
@@ -130,6 +137,68 @@ export default function User() {
           )}
         </tbody>
       </table>
+      <div className="border grid grid-cols-1 gap-5">
+        {/* <Button 
+        color="blue" 
+        title={"CHANGE"} 
+        onClick={()=>{
+          dispatch({
+            type: "change",
+            color: "#0008C1"
+          })
+        }}
+        />
+        <Button 
+        color="yellow" 
+        title={"CHANGE"} 
+        onClick={()=>{
+          dispatch({
+            type: "change",
+            color: "#FFFF00"
+          })
+        }}/>
+        <Button 
+        color="green" 
+        title={"SPIRIT"} 
+        onClick={()=>{
+          dispatch({
+            type: "return",
+            color: "#FF1E1E"
+          })
+        }}/> */}
+        <Button color="green" title={'green'} onClick={() => {
+          dispatch({
+            type: "change",
+            color: "#7CFC00"
+          })
+        }}/>
+        <Button color="purple" title={'purple'} onClick={() => {
+          dispatch({
+            type: "change",
+            color: "#533483"
+          })
+        }}/>
+        <Button title={'return'} onClick={() => {
+          dispatch({
+            type: "return"
+          })
+        }}/>
+        <p>status: {count.status}</p>
+        <p>value: {count.value}</p>
+        <Button
+          color="purple"
+          title={"Tambah"}
+          onClick={() => {
+            dispatch(increment());
+          }}
+        />
+        <Button
+          title={"Kurang"}
+          onClick={() => {
+            dispatch(decrement());
+          }}
+        />
+      </div>
     </div>
   );
 }

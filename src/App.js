@@ -9,12 +9,15 @@ import Artikel from "./page/artikel";
 import Tambah from "./page/artikel/tambah";
 import Detail from "./page/artikel/detail";
 import Update from "./page/artikel/update";
+import { useSelector } from "react-redux";
 
 
 function App() {
+  const color = useSelector((state) => state.color);
+  console.log(color);
   return (
     <React.Fragment>
-      <h1 className="bg-red-500 text-white">Belajar API</h1>
+      <h1 style={{backgroundColor:color.color}} >Belajar API</h1>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route

@@ -72,8 +72,9 @@ export default function User() {
   return (
     <div>
       <h1 className="text-xl text-blue-600">User</h1>
+      <div className="flex space-x-3 mb-4">
       <Link to="/user/create">
-        <button className="text-purple-600 mr-7">Tambah User</button>
+        <Button title={"+ User"}/>
       </Link>
       <div className="text-white">
         <Button
@@ -83,6 +84,7 @@ export default function User() {
             return navigate("/login", { replace: true });
           }}
         />
+      </div>
       </div>
       <table className="table-auto center">
         <thead>
@@ -137,7 +139,7 @@ export default function User() {
           )}
         </tbody>
       </table>
-      <div className="border grid grid-cols-1 gap-5">
+      <div className="border grid grid-cols-1 gap-5 mt-3">
         {/* <Button 
         color="blue" 
         title={"CHANGE"} 

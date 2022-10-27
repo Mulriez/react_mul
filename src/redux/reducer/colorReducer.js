@@ -1,19 +1,18 @@
 
-const colorState ={
-    color:"#FF1E1E"
-  }
+const colorState = {
+    color: "#FF5733",
+  };
   
  export const colorReducer = (state = colorState, action) => {
     if (action.type === "change") {
-      return{
-        color: action.type
-      }
+      return {
+        color: action.color,
+      };
     }
     if (action.type === "return") {
-      return{
-        color: "#FF1E1E"
-      }
+      return {
+        color: "#FF5733",
+      };
     }
     return state;
-  }
-
+  };

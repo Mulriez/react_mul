@@ -61,7 +61,7 @@ finally{
         <div className="text-white mt-5">
           <Button
             color="blue"
-            title={loading? "Bentar bang" : "Log in"}
+            title={loading? 'login' : "Bentar bang"}
           />
         </div>
       </form>

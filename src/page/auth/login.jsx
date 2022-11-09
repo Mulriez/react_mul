@@ -26,7 +26,7 @@ export default function Login() {
     });
   };
 
-  const [loading,setLoading] = React.useState(false)
+  const [isLoading, setLoading] = React.useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,7 +69,7 @@ finally{
         <div className="mt-5 space-x-5">
           <Button
             color="blue"
-            title={loading? 'proses' : "login"}
+            title={isLoading ? 'Process' : "Login"}
           />
           <Button 
           title={'register'}

@@ -4,6 +4,7 @@ import Button from "../../komponen/button";
 import { useNavigate, Link } from "react-router-dom";
 import { deleteArtikel, getAllArtikel } from "../../API/artikel";
 import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
 
 export default function Artikel() {
   const [list, setList] = React.useState([]);
@@ -37,7 +38,14 @@ export default function Artikel() {
         </Link>
         <Link to="/user">
           <Button color="blue" title={"user"} />
-        </Link>
+        </Link>   
+          <Button
+            title={"Log out"}
+            onClick={() => {
+              Cookies.remove("myapps_token");
+              return navigate("/login", { replace: true });
+            }}
+          />
       </div>
       <div className=" bg-slate-500 text-white w-40 rounded-md mt-5 mb-5 mr-5">
         <h1>Who is Login:</h1>
@@ -60,7 +68,9 @@ export default function Artikel() {
           {isFetch ? (
             <tr>
               <td colspan={9}>
-                <Skeleton count={1} />
+                <Skeleton count={1}
+                baseColor="#B8B5FF"
+                highlightColor="#7868E6" />
               </td>
             </tr>
           ) : (

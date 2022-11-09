@@ -73,21 +73,21 @@ export default function User() {
     <div>
       <h1 className="text-xl text-blue-600">User</h1>
       <div className="flex space-x-3 mb-4">
-      <Link to="/user/create">
-        <Button title={"+ User"}/>
-      </Link>
-      <div className="text-white">
-        <Button
-          title={"Log out"}
-          onClick={() => {
-            Cookies.remove("myapps_token");
-            return navigate("/login", { replace: true });
-          }}
-        />
-      </div>
-      <Link to="/artikel">
-        <Button title={"back"}/>
-      </Link>
+        <Link to="/user/create">
+          <Button title={"+ User"} />
+        </Link>
+        <div className="text-white">
+          <Button
+            title={"Log out"}
+            onClick={() => {
+              Cookies.remove("myapps_token");
+              return navigate("/login", { replace: true });
+            }}
+          />
+        </div>
+        <Link to="/artikel">
+          <Button title={"back"} />
+        </Link>
       </div>
       <table className="table-auto center">
         <thead>
@@ -171,23 +171,34 @@ export default function User() {
             color: "#FF1E1E"
           })
         }}/> */}
-        <Button color="green" title={'green'} onClick={() => {
-          dispatch({
-            type: "change",
-            color: "#7CFC00"
-          })
-        }}/>
-        <Button color="purple" title={'purple'} onClick={() => {
-          dispatch({
-            type: "change",
-            color: "#533483"
-          })
-        }}/>
-        <Button title={'return'} onClick={() => {
-          dispatch({
-            type: "return"
-          })
-        }}/>
+        <Button
+          color="green"
+          title={"green"}
+          onClick={() => {
+            dispatch({
+              type: "change",
+              color: "#7CFC00",
+            });
+          }}
+        />
+        <Button
+          color="purple"
+          title={"purple"}
+          onClick={() => {
+            dispatch({
+              type: "change",
+              color: "#533483",
+            });
+          }}
+        />
+        <Button
+          title={"return"}
+          onClick={() => {
+            dispatch({
+              type: "return",
+            });
+          }}
+        />
         <p>status: {count.status}</p>
         <p>value: {count.value}</p>
         <Button

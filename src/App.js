@@ -10,6 +10,7 @@ import Tambah from "./page/artikel/tambah";
 import Detail from "./page/artikel/detail";
 import Update from "./page/artikel/update";
 import { useSelector } from "react-redux";
+import Register from "./page/auth/register";
 
 
 function App() {
@@ -17,9 +18,10 @@ function App() {
   console.log(color);
   return (
     <React.Fragment>
-      <h1 style={{backgroundColor:color.color}} >Belajar API</h1>
+      <h1 style={{backgroundColor:color.color}} className={'text-white'} >Belajar API</h1>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path='/register' element={<Register/>}/>
         <Route
           path="/artikel/update/:slug"
           element={

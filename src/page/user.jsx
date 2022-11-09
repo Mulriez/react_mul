@@ -85,6 +85,9 @@ export default function User() {
           }}
         />
       </div>
+      <Link to="/artikel">
+        <Button title={"back"}/>
+      </Link>
       </div>
       <table className="table-auto center">
         <thead>

@@ -3,10 +3,13 @@ import Skeleton from "react-loading-skeleton";
 import Button from "../../komponen/button";
 import { useNavigate, Link } from "react-router-dom";
 import { deleteArtikel, getAllArtikel } from "../../API/artikel";
+import { useSelector } from "react-redux";
 
 export default function Artikel() {
   const [list, setList] = React.useState([]);
   const [isFetch, setIsFetch] = React.useState(false);
+  const nama = useSelector((state) => state.authProcess.name);
+  const email = useSelector((state) => state.authProcess.email);
   const navigate = useNavigate();
   const getListHandle = async () => {
     try {
@@ -22,18 +25,25 @@ export default function Artikel() {
   React.useEffect(() => {
     getListHandle();
   }, []);
-
+  const getUser = async () => {
+    try {
+    } catch (error) {}
+  };
   return (
     <div>
-      <div>
+      <div className="space-x-3 mt-5">
         <Link to="/tambahArt">
-        <Button
-          color="purple"
-          title={"Tambah"}
-        />
+          <Button color="purple" title={"Tambah"} />
+        </Link>
+        <Link to="/user">
+          <Button color="blue" title={"user"} />
         </Link>
       </div>
-      <h1></h1>
+      <div className=" bg-slate-500 text-white w-40 rounded-md mt-5 mb-5 mr-5">
+        <h1>Who is Login:</h1>
+        <h3>{nama}</h3>
+        <h3>{email}</h3>
+      </div>
       <table className="table-auto w-[1000px]">
         <thead>
           <tr className="text-left border flex">
@@ -75,29 +85,27 @@ export default function Artikel() {
                       title={"Edit"}
                     />
                     <Button
-                      onClick={async() => {
+                      onClick={async () => {
                         console.log("delete jalan");
-                        const response = await deleteArtikel(artikel.id)
-                        console.log(response.data)
+                        const response = await deleteArtikel(artikel.id);
+                        console.log(response.data);
                         try {
                           if (response.data.status === "Fail") {
-                            alert('gagal')
+                            alert("gagal");
+                          } else {
+                            alert("berhasil");
                           }
-                          else {
-                            alert('berhasil')
-                          }
-                          getListHandle()
-                        }
-                        catch (err){
+                          getListHandle();
+                        } catch (err) {
                           console.log(err);
                         }
                       }}
                       color="red"
                       title={"Delete"}
                     />
-                     <Button
+                    <Button
                       onClick={() => {
-                        return navigate(`/detail/${artikel.slug}`)
+                        return navigate(`/detail/${artikel.slug}`);
                         console.log("delete jalan");
                       }}
                       color="purple"

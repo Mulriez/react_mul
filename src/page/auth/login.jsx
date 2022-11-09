@@ -4,16 +4,19 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../komponen/button";
 import Input from "../../komponen/input";
 import {login} from "../../API/auth"
+import { useDispatch } from "react-redux";
+import { authLogin } from "../../redux/action/authAction";
 
 
 export default function Login() {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
 
   const [payload, setPayload] = React.useState({
     email: "",
     password: "",
   });
-
+  const [msgError, setMsgError] = React.useState("")
   const handleChange = (e) => {
     setPayload((payload) => {
       return {
@@ -24,13 +27,17 @@ export default function Login() {
   };
 
   const [loading,setLoading] = React.useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 try {
-    const response = await login(payload);
-    const data = response.data
-    Cookies.set("myapps_token", data?.token);
-    return navigate("/artikel", {replace:true})
+    const response = await dispatch(authLogin(payload));
+   console.log('response', response);
+   if (response?.status === 'Success') {
+     return navigate("/artikel", {replace:true})
+   }else{
+    setMsgError(response?.response?.data?.message)
+   }
 } catch (err) {
     console.log(err);
 }
@@ -58,11 +65,17 @@ finally{
           placeholder="Password"
           type="password"
         />
-        <div className="text-white mt-5">
+        <p className="text-red-500">{msgError}</p>
+        <div className="mt-5 space-x-5">
           <Button
             color="blue"
-            title={loading? 'login' : "Bentar bang"}
+            title={loading? 'proses' : "login"}
           />
+          <Button 
+          title={'register'}
+          onClick={()=> {
+            return navigate("/register") 
+          }}/>
         </div>
       </form>
     </>

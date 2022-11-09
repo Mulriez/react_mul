@@ -13,6 +13,5 @@ export const authProcess = (state = initialState, action) => {
       isAuth: true,
     };
   }
-
-  return state
+  return state;
 };

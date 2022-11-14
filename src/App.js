@@ -1,16 +1,16 @@
-import React, {useRef} from 'react';
+import React from "react";
+import Reduce from "./useREF/useReducer";
+import RefTutorial from "./useREF/useTutor";
+import LayoutTutor from "./useREF/useLayoutEffect";
+import Parent from "./useREF/optimize";
 
-export default function RefTutorial(){
-const inputRef = useRef(null);
-const onClick =() => {
-console.log(inputRef.current.value);
-inputRef.current.focus()
-inputRef.current.value = "SHIN"
-};
-return(
-  <div>
-    <h1>Black SUN</h1>
-    in
-  </div>
-)
+export default function App() {
+  return (
+    <React.Fragment>
+      <Reduce />
+      {/* <RefTutorial/> */}
+      <LayoutTutor/>
+      <Parent/>
+    </React.Fragment>
+  );
 }

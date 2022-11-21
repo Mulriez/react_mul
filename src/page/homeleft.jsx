@@ -104,7 +104,7 @@ const HomeLeft = () => {
         </div>
 
         <div className="mt-5 w-full">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((item, index) => {
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11].map((item, index) => {
             return (
               <section key={index} className="space-y-3 w-full hover:bg-[#222e35] cursor-pointer">
                 <div className="pl-3 w-full">

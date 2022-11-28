@@ -1,16 +1,25 @@
 import React from "react";
-import Reduce from "./useREF/useReducer";
-import RefTutorial from "./useREF/useTutor";
-import LayoutTutor from "./useREF/useLayoutEffect";
-import Parent from "./useREF/optimize";
+import useJuz from "./hook/useJuz";
 
-export default function App() {
+function App() {
+  // const { alquran } = useList();
+  //cara memanggil
+  const { alquran: data, setJuz, juz } = useJuz(1);
+  console.log("alquran", data);
   return (
     <React.Fragment>
-      <Reduce />
-      {/* <RefTutorial/> */}
-      <LayoutTutor/>
-      <Parent/>
+      <div className="w-full h-full bg-gray-800">
+        <h1 className="w-full bg-emerald-400">Belajar hook</h1>
+        <h2 className="font-bold text-white">{juz}</h2>
+        <button
+          onClick={() => setJuz((juz) => juz + 1)}
+          className="px-3 py-1 bg-slate-500 text-white rounded-md"
+        >
+          Ganti juz
+        </button>
+      </div>
     </React.Fragment>
   );
 }
+
+export default App;

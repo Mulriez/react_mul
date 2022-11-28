@@ -7,5 +7,7 @@ export default function LayoutTutor() {
     useEffect(()=>{
         console.log("UseEffect");
     }, []);
-    return <div></div>
+    return <div>
+        {console.log("Gempa😱😱😱")}
+    </div>
 }

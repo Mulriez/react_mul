@@ -54,7 +54,8 @@ function Reduce() {
             dispatch({
               type: "toggleShowText",
             });
-          }}
+          }
+        }
         />
       </div>
       {state.showText && (

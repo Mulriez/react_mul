@@ -1,61 +1,57 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-// function App(){
-//   let a = 20
-//   let b = 10
-//   return (
-//     <div>
-//       <h1>Hello World ke-{a}</h1>
-//       <h1>Hello World ke-{a+b}</h1>
-//     </div>
-//   )
-// }
-
-// export default App;
-
-// function App() {
-//   let a = 20
-//   let b = 20
-//   return(
-//     <React.Fragment>
-//       <h1>SANGAT PAHAM UNTUK YG KE {a}</h1>
-//       <h1>SANGAT PAHAM UNTUK YG KE {a+b}</h1>
-//     </React.Fragment>
-//   );
-// }
-
-// export default App;
-
-import React from 'react';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Dash from "./page/dash";
+import Detail from "./page/detailprod";
+import Fp from "./page/forgot";
+import History from "./page/history";
+import Keranjang from "./page/keranjang";
+import Login from "./page/login";
+import Register from "./page/register";
+import Reset from "./page/reset";
+import ProtectRoute from "./router/protectRoute";
 
 function App() {
-  return(
+  return (
     <React.Fragment>
-      <h1 className='bg-red-500'>my beat</h1>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot" element={<Fp />} />
+        <Route path="/reset-password/:id/:token" element={<Reset />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectRoute>
+              <Dash />
+            </ProtectRoute>
+          }
+        />
+        <Route
+          path="/product/detail/:uuid"
+          element={
+            <ProtectRoute>
+              <Detail />
+            </ProtectRoute>
+          }
+        />
+        <Route
+          path="/keranjang"
+          element={
+            <ProtectRoute>
+              <Keranjang/>
+            </ProtectRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <ProtectRoute>
+              <History/>
+            </ProtectRoute>
+          }
+        />
+        <Route path="*" element={<Login />} />
+      </Routes>
     </React.Fragment>
   );
 }
